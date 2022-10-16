@@ -2,18 +2,18 @@ package Service;
 
 import java.util.ArrayList;
 
-public class NodeFSF {
+public class ArrayListFSF {
 	private ObjectFSF identity;
 	private ArrayList<ObjectFSF> all = new ArrayList<>();
 	private long length;
 
-	public NodeFSF(ObjectFSF first, ObjectFSF two) {
+	public ArrayListFSF(ObjectFSF first, ObjectFSF two) {
 		this.identity = first;
 		this.length = first.getLength();
 		all.add(first);
 		all.add(two);
 	}
-	public NodeFSF(ObjectFSF first) {
+	public ArrayListFSF(ObjectFSF first) {
 		this.identity = first;
 		this.length = first.getLength();
 		all.add(first);

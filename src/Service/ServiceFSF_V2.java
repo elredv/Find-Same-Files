@@ -60,8 +60,8 @@ public class ServiceFSF_V2 {
 		return file;
 	}
 
-	private final HashMap<String, NodeFSF> allFilesName = new HashMap<>();
-	private final ArrayList<NodeFSF> sameFiles = new ArrayList<>();
+	private final HashMap<String, ArrayListFSF> allFilesName = new HashMap<>();
+	private final ArrayList<ArrayListFSF> sameFiles = new ArrayList<>();
 
 	private void cacheFiles(String path){
 		File [] listFiles;
@@ -86,10 +86,10 @@ public class ServiceFSF_V2 {
 				cacheFiles(file.getPath());
 			} else {
 				String name = file.getName() + "_" + file.length();
-				NodeFSF node = allFilesName.get(name);
+				ArrayListFSF node = allFilesName.get(name);
 				ObjectFSF obj = new ObjectFSF(file.getPath(), name, file.length());
 				if (node==null) {
-					node = new NodeFSF(obj);
+					node = new ArrayListFSF(obj);
 					allFilesName.put(name, node);
 				} else {
 					node.add(obj);
@@ -103,7 +103,7 @@ public class ServiceFSF_V2 {
 	private void printInfo() {
 		float total_length = 0;
 		for (int i = 0; i < sameFiles.size(); i++) {
-			NodeFSF node = sameFiles.get(i);
+			ArrayListFSF node = sameFiles.get(i);
 
 			float length = (float) node.getLength() / 1024 / 1024;
 			String format_length = String.format("%.1f", length);

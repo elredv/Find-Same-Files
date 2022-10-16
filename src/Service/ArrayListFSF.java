@@ -7,16 +7,10 @@ public class ArrayListFSF {
 	private ArrayList<ObjectFSF> all = new ArrayList<>();
 	private long length;
 
-	public ArrayListFSF(ObjectFSF first, ObjectFSF two) {
-		this.identity = first;
-		this.length = first.getLength();
-		all.add(first);
-		all.add(two);
-	}
-	public ArrayListFSF(ObjectFSF first) {
-		this.identity = first;
-		this.length = first.getLength();
-		all.add(first);
+	public ArrayListFSF(ObjectFSF obj) {
+		this.identity = obj;
+		this.length = obj.getLength();
+		all.add(obj);
 	}
 
 	public ObjectFSF getIdentity() {

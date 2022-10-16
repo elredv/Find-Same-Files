@@ -1,10 +1,10 @@
-package Service;
-
-import Exceptions.FolderNotFoundException;
+package FindSameFiles.Service;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import FindSameFiles.Exceptions.FolderNotFoundException;
 
 public class ServiceFSF_V2 {
 	public ServiceFSF_V2() {}

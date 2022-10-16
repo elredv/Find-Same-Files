@@ -1,4 +1,4 @@
-package Service;
+package FindSameFiles.Service;
 
 public class ServiceLogging {
 	private ServiceLogging(){}

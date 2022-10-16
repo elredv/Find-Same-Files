@@ -1,4 +1,4 @@
-package Service;
+package FindSameFiles.Service;
 
 import java.util.ArrayList;
 

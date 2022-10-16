@@ -107,7 +107,7 @@ public class ServiceFSF_V2 {
 
 			float length = (float) node.getLength() / 1024 / 1024;
 			String format_length = String.format("%.1f", length);
-			for (ObjectFSF obj : node.getAll()) {
+			for (ObjectFSF obj : node.getArrayList()) {
 				ServiceLogging.log("[#" + i + " | " + format_length + "mb] " + obj.getPath());
 				total_SameFiles++;
 			}

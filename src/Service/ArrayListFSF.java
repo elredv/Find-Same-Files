@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class ArrayListFSF {
 	private ObjectFSF identity;
-	private ArrayList<ObjectFSF> all = new ArrayList<>();
+	private ArrayList<ObjectFSF> arrayList = new ArrayList<>();
 	private long length;
 
 	public ArrayListFSF(ObjectFSF obj) {
 		this.identity = obj;
 		this.length = obj.getLength();
-		all.add(obj);
+		arrayList.add(obj);
 	}
 
 	public ObjectFSF getIdentity() {
@@ -18,10 +18,10 @@ public class ArrayListFSF {
 	}
 
 	public void add(ObjectFSF obj) {
-		all.add(obj);
+		arrayList.add(obj);
 	}
-	public ArrayList<ObjectFSF> getAll() {
-		return all;
+	public ArrayList<ObjectFSF> getArrayList() {
+		return arrayList;
 	}
 
 	public long getLength() {

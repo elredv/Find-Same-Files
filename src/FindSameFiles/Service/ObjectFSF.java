@@ -1,9 +1,9 @@
 package FindSameFiles.Service;
 
 public class ObjectFSF {
-	private String path;
-	private String name;
-	private long length;
+	private final String path;
+	private final String name;
+	private final long length;
 	public ObjectFSF(String path, String name, Long length) {
 		this.path = path;
 		this.name = name;

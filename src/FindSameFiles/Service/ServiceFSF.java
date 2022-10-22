@@ -6,12 +6,12 @@ import java.util.HashMap;
 
 import FindSameFiles.Exceptions.FolderNotFoundException;
 
-public class ServiceFSF_V2 {
-	public ServiceFSF_V2() {}
+public class ServiceFSF {
+	public ServiceFSF() {}
 	private final ArrayList<String> pathArray = new ArrayList<>();
 	private int total_AllFiles = 0;
 	private int total_SameFiles = 0;
-	public ServiceFSF_V2(String path) {
+	public ServiceFSF(String path) {
 		addPath(path);
 	}
 

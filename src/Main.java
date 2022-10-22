@@ -1,13 +1,13 @@
 // import Service.ServiceFSF;
 import java.util.Scanner;
 
-import FindSameFiles.Service.ServiceFSF_V2;
+import FindSameFiles.Service.ServiceFSF;
 
 public class Main {
 	public static void main(String[] args) {
 
 //        ServiceFSF service = new ServiceFSF();
-		ServiceFSF_V2 service = new ServiceFSF_V2();
+		ServiceFSF service = new ServiceFSF();
 
 		Scanner scan = new Scanner(System.in);
 

@@ -1,10 +1,10 @@
 package FindSameFiles.Service;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import FindSameFiles.Exceptions.FolderNotFoundException;
 
 public class ServiceFSF {
 	public ServiceFSF() {}
@@ -46,16 +46,16 @@ public class ServiceFSF {
 		ServiceLogging.log("Время выполнения программы: " + endTime + " секунд");
 	}
 
-	private void checkValidPath(String path) throws FolderNotFoundException {
+	private void checkValidPath(String path) throws FileNotFoundException {
 		File file = new File(path);
 		if (!file.exists()) {
-			throw new FolderNotFoundException("Папка \"" + path + "\" не существует");
+			throw new FileNotFoundException("Папка \"" + path + "\" не существует");
 		}
 	}
-	private File checkValidPathReturnFile(String path) throws FolderNotFoundException {
+	private File checkValidPathReturnFile(String path) throws FileNotFoundException {
 		File file = new File(path);
 		if (!file.exists()) {
-			throw new FolderNotFoundException("Папка \"" + path + "\" не существует");
+			throw new FileNotFoundException("Папка \"" + path + "\" не существует");
 		}
 		return file;
 	}

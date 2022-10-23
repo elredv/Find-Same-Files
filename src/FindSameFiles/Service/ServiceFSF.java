@@ -2,6 +2,8 @@ package FindSameFiles.Service;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -41,14 +43,13 @@ public class ServiceFSF {
 
 		float endTime = (float)(System.currentTimeMillis() - startTime) / 1000;
 		ServiceLogging.log("В сумме файлов проверено: " + total_AllFiles);
-		ServiceLogging.log("В сумме повторяющихся файлов: " + sameFiles.size());
-		ServiceLogging.log("В сумме лишних файлов: " + (total_SameFiles - sameFiles.size()));
+		ServiceLogging.log("В сумме повторяющихся файлов: " + listSameFiles.size());
+		ServiceLogging.log("В сумме лишних файлов: " + (total_SameFiles - listSameFiles.size()));
 		ServiceLogging.log("Время выполнения программы: " + endTime + " секунд");
 	}
 
 	private void checkValidPath(String path) throws FileNotFoundException {
-		File file = new File(path);
-		if (!file.exists()) {
+		if (Files.notExists(Path.of(path))) {
 			throw new FileNotFoundException("Папка \"" + path + "\" не существует");
 		}
 	}
@@ -60,8 +61,8 @@ public class ServiceFSF {
 		return file;
 	}
 
-	private final HashMap<String, ArrayListFSF> allFilesName = new HashMap<>();
-	private final ArrayList<ArrayListFSF> sameFiles = new ArrayList<>();
+	private final HashMap<String, ArrayListFSF> hashMapFilesName = new HashMap<>();
+	private final ArrayList<ArrayListFSF> listSameFiles = new ArrayList<>();
 
 	private void cacheFiles(String path){
 		File [] listFiles;
@@ -86,14 +87,14 @@ public class ServiceFSF {
 				cacheFiles(file.getPath());
 			} else {
 				String name = file.getName() + "_" + file.length();
-				ArrayListFSF node = allFilesName.get(name);
+				ArrayListFSF node = hashMapFilesName.get(name);
 				ObjectFSF obj = new ObjectFSF(file.getPath(), name, file.length());
 				if (node==null) {
 					node = new ArrayListFSF(obj);
-					allFilesName.put(name, node);
+					hashMapFilesName.put(name, node);
 				} else {
 					node.add(obj);
-					sameFiles.add(node);
+					listSameFiles.add(node);
 				}
 				total_AllFiles++;
 			}
@@ -102,8 +103,8 @@ public class ServiceFSF {
 
 	private void printInfo() {
 		float total_length = 0;
-		for (int i = 0; i < sameFiles.size(); i++) {
-			ArrayListFSF node = sameFiles.get(i);
+		for (int i = 0; i < listSameFiles.size(); i++) {
+			ArrayListFSF node = listSameFiles.get(i);
 
 			float length = (float) node.getLength() / 1024 / 1024;
 			String format_length = String.format("%.1f", length);
